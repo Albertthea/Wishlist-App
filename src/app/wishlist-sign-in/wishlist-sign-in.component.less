@@ -1,0 +1,47 @@
+@import '../../shared/variables';
+
+.form-wrapper {
+  padding-top: 10em;
+}
+
+.auth-form {
+  background-color: whitesmoke;
+  border: 1px solid @borders-color;
+  margin: auto;
+  text-align: center;
+  padding: 2em 5em;
+  width: 50em;
+}
+
+.row-wrapper {
+  margin-bottom: 2em;
+}
+
+.row-wrapper_type_input {
+  height: 5em;
+}
+
+.input-error {
+  text-align: left;
+}
+
+.auth-form__button {
+  margin: 0 2em;
+}
+
+.toggle-mode {
+  background: none;
+  border: none;
+  padding: 0;
+  color: @main-theme-color;
+  transition: color 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: @secondary-theme-color;
+  }
+}

@@ -1,0 +1,74 @@
+<div class="form-wrapper">
+  <form class="auth-form" [formGroup]="form">
+    <div class="row-wrapper">
+      <h1>{{ mode === "sign-in" ? "Вход" : "Регистрация" }}</h1>
+    </div>
+
+    <div class="row-wrapper row-wrapper_type_input">
+      <tui-input formControlName="emailInput">E-mail</tui-input>
+      <tui-error
+        class="input-error"
+        formControlName="emailInput"
+        *ngIf="
+          (form.get('emailInput')?.touched || form.get('emailInput')?.dirty) &&
+          form.get('emailInput')?.hasError('required')
+        "
+      >
+        Поле обязательно для заполнения
+      </tui-error>
+      <tui-error
+        class="input-error"
+        formControlName="emailInput"
+        *ngIf="
+          form.get('emailInput')?.touched &&
+          form.get('emailInput')?.hasError('email')
+        "
+      >
+        Адрес должен быть в формате example@example.com
+      </tui-error>
+    </div>
+
+    <div class="row-wrapper row-wrapper_type_input">
+      <tui-input formControlName="passwordInput">Пароль</tui-input>
+      <tui-error
+        class="input-error"
+        formControlName="passwordInput"
+        *ngIf="
+          (form.get('passwordInput')?.touched ||
+            form.get('passwordInput')?.dirty) &&
+          form.get('passwordInput')?.hasError('required')
+        "
+      >
+        Поле обязательно для заполнения
+      </tui-error>
+      <tui-error
+        class="input-error"
+        formControlName="passwordInput"
+        *ngIf="
+          form.get('passwordInput')?.touched &&
+          form.get('passwordInput')?.hasError('minlength')
+        "
+      >
+        Длина пароля должна быть не менее 6 символов
+      </tui-error>
+    </div>
+
+    <div class="row-wrapper">
+      <button
+        type="button"
+        class="auth-form__button"
+        tuiButton
+        (click)="sign()"
+      >
+        {{ mode === "sign-in" ? "Войти" : "Зарегистрироваться" }}
+      </button>
+    </div>
+
+    <div class="row-wrapper">
+      {{ mode === "sign-in" ? "Еще нет аккаунта?" : "Уже есть аккаунт?" }}
+      <button class="toggle-mode" type="button" (click)="toggleMode()">
+        {{ mode === "sign-in" ? "Зарегистрироваться" : "Войти" }}
+      </button>
+    </div>
+  </form>
+</div>
