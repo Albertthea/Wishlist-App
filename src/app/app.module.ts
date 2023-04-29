@@ -8,6 +8,7 @@ import { WishlistModule } from './wishlist/wishlist.module';
 import { WishlistSignInModule } from './wishlist-sign-in/wishlist-sign-in.module';
 import { TuiInputModule } from '@taiga-ui/kit';
 import { WishlisProfilenModule } from './wishlist-profile/wishlist-profile.module';
+import { WishlistNotFoundModule } from './wishlist-not-found/wishlist-not-found.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -21,6 +22,7 @@ import { WishlisProfilenModule } from './wishlist-profile/wishlist-profile.modul
     WishlistSignInModule,
     TuiInputModule,
     WishlisProfilenModule,
+    WishlistNotFoundModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
