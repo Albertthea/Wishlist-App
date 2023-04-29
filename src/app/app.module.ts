@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { WishlistModule } from './wishlist/wishlist.module';
 import { WishlistSignInModule } from './wishlist-sign-in/wishlist-sign-in.module';
 import { TuiInputModule } from '@taiga-ui/kit';
+import { WishlisProfilenModule } from './wishlist-profile/wishlist-profile.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,6 +20,7 @@ import { TuiInputModule } from '@taiga-ui/kit';
     WishlistModule,
     WishlistSignInModule,
     TuiInputModule,
+    WishlisProfilenModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

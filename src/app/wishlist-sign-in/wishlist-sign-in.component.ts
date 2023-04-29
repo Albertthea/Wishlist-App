@@ -20,14 +20,18 @@ import { TUI_VALIDATION_ERRORS } from '@taiga-ui/kit';
 export class WishlistSignInComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const btn = document.querySelector('.auth-form__button') as HTMLElement;
-    btn.addEventListener('mousedown', (event) => {
+    let position = 0;
+    btn.addEventListener('mouseover', (event) => {
       if (this.form.invalid) {
-        event.preventDefault();
+        position ? (position = 0) : (position = 150);
+        btn.style.transform = `translate(${position}px, 0px)`;
+        btn.style.transition = 'all 0.3s ease';
+      } else {
+        return;
       }
     });
   }
 
-  private isButtonMoved: boolean = false;
   mode: 'sign-in' | 'sign-up' = 'sign-in';
 
   form = new FormGroup({
@@ -51,29 +55,21 @@ export class WishlistSignInComponent implements AfterViewInit {
   }
 
   sign(): void {
-    const btn = document.querySelector('.auth-form__button') as HTMLElement;
-    const formEl = document.querySelector('.auth-form') as HTMLFormElement;
-
     if (this.form.valid) {
       const email = this.form.get('emailInput')?.value;
       const password = this.form.get('passwordInput')?.value;
 
-      console.log(
-        `Signing ${
-          this.mode === 'sign-in' ? 'in' : 'up'
-        } with email: ${email} and password: ${password}`
-      );
-      btn.style.transform = '';
-      btn.style.transition = '';
-    } else if (!this.form.valid) {
-      // Toggle the isButtonMoved flag and calculate the position
-      this.isButtonMoved = !this.isButtonMoved;
-      const position = this.isButtonMoved ? 130 : 0;
-      btn.style.transform = `translate(${position}px, 0px)`;
-      btn.style.transition = 'all 0.3s ease';
-      this.form.markAllAsTouched();
+      if (this.mode === 'sign-in') {
+        console.log(
+          `Signing in with email: ${email} and password: ${password}`
+        );
+      } else if (this.mode === 'sign-up') {
+        console.log(
+          `Signing up with email: ${email} and password: ${password}`
+        );
+      }
     } else {
-      return;
+      this.form.markAllAsTouched();
     }
   }
 }

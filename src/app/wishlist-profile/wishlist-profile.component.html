@@ -1,0 +1,18 @@
+<div class="profile-wrapper">
+  <div class="profile">
+    <h1 class="profile__title">Profile</h1>
+    <div class="user-info">
+      <div class="user-info__email">Your email: {{ userData?.email }}</div>
+      <tui-svg
+        class="user-info__button"
+        src="tuiIconLogOutLarge"
+        (click)="signOut()"
+      ></tui-svg>
+    </div>
+    <div class="row-wrapper">
+      <a href="/">
+        <button>Go to task wishlist</button>
+      </a>
+    </div>
+  </div>
+</div>
