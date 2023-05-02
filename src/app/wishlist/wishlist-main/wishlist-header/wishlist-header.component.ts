@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TuiDay } from '@taiga-ui/cdk';
-import { WishlistCategory } from 'src/shared/modes/WishlistCategory';
+import { WishlistFest } from 'src/shared/modes/WishlistFest';
 
 @Component({
   selector: 'app-wishlist-header',
@@ -8,7 +8,7 @@ import { WishlistCategory } from 'src/shared/modes/WishlistCategory';
   styleUrls: ['./wishlist-header.component.less'],
 })
 export class WishlistHeaderComponent {
-  @Input() category!: WishlistCategory;
+  @Input() category!: WishlistFest;
 
   currentDate = TuiDay.currentLocal();
 }

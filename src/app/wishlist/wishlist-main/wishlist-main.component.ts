@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WishlistCategory } from 'src/shared/modes/WishlistCategory';
+import { WishlistFest } from 'src/shared/modes/WishlistFest';
 import { WishlistGift } from 'src/shared/modes/WishlistGift';
 
 @Component({
@@ -12,7 +12,7 @@ export class WishlistMainComponent implements OnInit {
     this.currentCategoryId = '';
   }
 
-  categories: WishlistCategory[] = [];
+  categories: WishlistFest[] = [];
   currentCategoryId: string;
   gifts: WishlistGift[] = [];
 
@@ -20,18 +20,18 @@ export class WishlistMainComponent implements OnInit {
     this.currentCategoryId = 'someCategoryID';
   }
 
-  getCurrentCategory(): WishlistCategory {
+  getCurrentCategory(): WishlistFest {
     const category = this.categories.find(
       (c) => c.categoryId === this.currentCategoryId
     );
     return category || { categoryId: '', categoryTitle: '', gifts: [] };
   }
 
-  addCategory(category: WishlistCategory): void {
+  addCategory(category: WishlistFest): void {
     this.categories.push(category);
   }
 
-  editCategory(category: WishlistCategory): void {
+  editCategory(category: WishlistFest): void {
     const index = this.categories.findIndex(
       (c) => c.categoryId === category.categoryId
     );

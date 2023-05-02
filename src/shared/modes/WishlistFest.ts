@@ -1,6 +1,6 @@
 import { WishlistGift } from "./WishlistGift";
 
-export interface WishlistCategory {
+export interface WishlistFest {
   categoryId: string;
   categoryTitle: string;
   gifts: WishlistGift[];

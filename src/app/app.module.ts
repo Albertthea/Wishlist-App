@@ -5,11 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { WishlistModule } from './wishlist/wishlist.module';
-import { WishlistSignInModule } from './wishlist-sign-in/wishlist-sign-in.module';
 import { TuiInputModule } from '@taiga-ui/kit';
-import { WishlisProfilenModule } from './wishlist-profile/wishlist-profile.module';
-import { WishlistNotFoundModule } from './wishlist-not-found/wishlist-not-found.module';
-import { WishlistMainModule } from './wishlist-main/wishlist-main.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -20,11 +17,7 @@ import { WishlistMainModule } from './wishlist-main/wishlist-main.module';
     FormsModule,
     ReactiveFormsModule,
     WishlistModule,
-    WishlistSignInModule,
     TuiInputModule,
-    WishlisProfilenModule,
-    WishlistNotFoundModule,
-    WishlistMainModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

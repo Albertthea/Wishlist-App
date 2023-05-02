@@ -25,4 +25,4 @@ import { BrowserModule } from '@angular/platform-browser';
     TuiSvgModule,
   ],
 })
-export class WishlisProfilenModule {}
+export class WishlistProfileModule {}
