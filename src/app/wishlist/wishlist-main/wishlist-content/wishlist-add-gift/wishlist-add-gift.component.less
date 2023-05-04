@@ -1,0 +1,32 @@
+@import "./../../../../../shared/variables.less";
+@import "~@taiga-ui/core/styles/taiga-ui-local";
+
+.add-gift__form {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 10px;
+}
+
+.add-gift__submit-button {
+  background: @main-theme-color;
+  color: @titles-color;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 1px 1px 4px 0 @shadow-color;
+  }
+
+  &:active {
+    box-shadow: inset 2px 2px 5px 0 @shadow-color;
+  }
+}
+
+.tui-form__row {
+  padding-bottom: 10px;
+}
+
+.help-inline {
+  color: @remove-color;
+}

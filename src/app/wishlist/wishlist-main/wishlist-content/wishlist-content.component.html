@@ -1,1 +1,6 @@
-<p>wishlist-content works!</p>
+<div class="content">
+  <app-wishlist-add-gift
+    *ngIf="isFormExpanded"
+    (addGift)="sendCreatedGift($event)"
+  ></app-wishlist-add-gift>
+</div>

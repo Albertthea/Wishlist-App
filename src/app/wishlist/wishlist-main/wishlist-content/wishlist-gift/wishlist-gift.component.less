@@ -1,0 +1,85 @@
+@import "./../../../../../shared/variables.less";
+
+.gift {
+  padding: 0.5em 1em;
+  border-bottom: 1px solid @borders-color;
+}
+
+.gift__type_done {
+  .circle {
+    background-color: @gift-done-button-color;
+  }
+
+  .gift__title,
+  .gift__description {
+    text-decoration: line-through;
+    color: @gift-done-text-color;
+  }
+}
+
+.gift__main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.5em;
+}
+
+.gift__left-side-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  width: 1.8em;
+  height: 1.8em;
+  border: 2px solid @borders-color;
+  border-radius: 50%;
+}
+
+.gift__text-container {
+  padding: 0 2em;
+}
+
+.gift__title {
+  display: inline-block;
+  margin: 0;
+  color: @titles-color;
+}
+
+.gift__description {
+  margin: 0;
+  color: @main-text-color;
+}
+
+.gift__button {
+  color: @borders-color;
+  margin-left: 0.3em;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.gift__button_type_other {
+  &:hover {
+    color: @main-theme-color;
+  }
+}
+
+.gift__button_type_starred {
+  color: @main-theme-color;
+}
+
+.gift__button_type_remove {
+  &:hover {
+    color: @remove-color;
+  }
+}
+
+.gift__additional-info {
+  margin-left: 3.7em;
+}
+
+.gift__comment {
+  margin-left: 0.5em;
+}

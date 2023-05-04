@@ -1,1 +1,27 @@
-<p>wishlist-gift works!</p>
+<!-- <div class="gift" [ngClass]="{ gift__type_done: gift.isDone }">
+  <div class="gift__main-info">
+    <div class="gift__left-side-wrapper">
+      <div class="circle" (click)="toggleDoneStatus()"></div>
+      <div class="gift__text-container">
+        <h3 class="gift__title">{{ gift.giftTitle }}</h3>
+        <p class="gift__category">{{ gift.parentCategoryTitle }}</p>
+      </div>
+    </div>
+    <div class="gift__button-container">
+      <button
+        class="gift__button"
+      ></button>
+      <button
+        class="gift__button gift__button_type_trash"
+        (click)="deleteGift()"
+      ></button>
+    </div>
+  </div>
+  <div class="gift__edit-container" *ngIf="isExpanded">
+    <app-todo-add-gift
+      mode="edit"
+      [gift]="gift"
+      (editGift)="sendEditedGift($event)"
+    ></app-todo-add-gift>
+  </div>
+</div> -->
