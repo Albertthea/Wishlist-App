@@ -1,6 +1,19 @@
 <div class="content">
-  <app-wishlist-add-gift
-    *ngIf="isFormExpanded"
-    (addGift)="sendCreatedGift($event)"
-  ></app-wishlist-add-gift>
+  <button
+    tuiButton
+    class="add-task__button"
+    type="button"
+    (click)="toggle()"
+  >
+    {{ expanded ? "-" : "+" }}
+  </button>
+  <app-wishlist-add-gift *ngIf="expanded" (addGift)="addGift($event)"></app-wishlist-add-gift>
+  <app-wishlist-gift
+    *ngFor="let g of gifts; let i = index"
+    [gift]="g"
+    [isExpanded]="i === expandedItem"
+    (toggleExpand)="onToggleExpand(i)"
+    (editGift)="sendEditedGift($event)"
+    (delete)="sendGiftDeleting($event)"
+  ></app-wishlist-gift>
 </div>

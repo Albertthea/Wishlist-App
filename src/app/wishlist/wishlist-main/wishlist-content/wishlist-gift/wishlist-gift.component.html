@@ -1,27 +1,41 @@
-<!-- <div class="gift" [ngClass]="{ gift__type_done: gift.isDone }">
+<div class="gift" [ngClass]="{ gift__type_done: gift.isDone }">
   <div class="gift__main-info">
     <div class="gift__left-side-wrapper">
-      <div class="circle" (click)="toggleDoneStatus()"></div>
-      <div class="gift__text-container">
+      <div
+        class="circle"
+        (click)="toggleDoneStatus()"
+      ></div>
+
+      <div class="gift__text-container" (click)="onShowData()">
         <h3 class="gift__title">{{ gift.giftTitle }}</h3>
-        <p class="gift__category">{{ gift.parentCategoryTitle }}</p>
       </div>
     </div>
+
     <div class="gift__button-container">
-      <button
-        class="gift__button"
-      ></button>
-      <button
-        class="gift__button gift__button_type_trash"
+      <tui-svg
+        *ngIf="!gift.isDone"
+        class="gift__button task__button_type_other"
+        [src]="isExpanded ? 'tuiIconMinusLarge' : 'tuiIconMenuLarge'"
+        (click)="toggleView()"
+      ></tui-svg>
+      <tui-svg
+        class="gift__button task__button_type_remove"
+        src="tuiIconXLarge"
         (click)="deleteGift()"
-      ></button>
+      ></tui-svg>
     </div>
   </div>
-  <div class="gift__edit-container" *ngIf="isExpanded">
-    <app-todo-add-gift
-      mode="edit"
-      [gift]="gift"
-      (editGift)="sendEditedGift($event)"
-    ></app-todo-add-gift>
+  <div class="hidden" *ngIf="showData">
+    {{ gift.giftComment }}
   </div>
-</div> -->
+
+  <div class="gift__edit-container" *ngIf="isExpanded">
+    <app-wishlist-add-gift
+      [gift]="gift"
+      [titleInitial]="gift.giftTitle"
+      [commentInitial]="gift.giftComment ? gift.giftComment : null"
+      (addGift)="sendEditedGift($event)"
+      [submitButtonText]="'Сохранить'"
+    ></app-wishlist-add-gift>
+  </div>
+</div>

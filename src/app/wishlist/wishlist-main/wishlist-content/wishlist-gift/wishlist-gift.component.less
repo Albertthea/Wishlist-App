@@ -3,38 +3,40 @@
 .gift {
   padding: 0.5em 1em;
   border-bottom: 1px solid @borders-color;
-}
 
-.gift__type_done {
-  .circle {
-    background-color: @gift-done-button-color;
+  &__type_done {
+    .circle {
+      background-color: @gift-done-button-color;
+    }
+
+    .gift__title {
+      text-decoration: line-through;
+      color: @gift-done-text-color;
+    }
   }
 
-  .gift__title,
-  .gift__description {
-    text-decoration: line-through;
-    color: @gift-done-text-color;
+  &__main-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.5em;
+  }
+
+  &__left-side-wrapper {
+    display: flex;
+    align-items: center;
   }
 }
-
-.gift__main-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 4.5em;
-}
-
-.gift__left-side-wrapper {
-  display: flex;
-  align-items: center;
-}
-
 .circle {
   width: 1.8em;
   height: 1.8em;
   border: 2px solid @borders-color;
   border-radius: 50%;
 }
+
+// .circle .touched {
+//   background-color: @gift-done-button-color;
+// }
 
 .gift__text-container {
   padding: 0 2em;
@@ -64,10 +66,6 @@
   &:hover {
     color: @main-theme-color;
   }
-}
-
-.gift__button_type_starred {
-  color: @main-theme-color;
 }
 
 .gift__button_type_remove {

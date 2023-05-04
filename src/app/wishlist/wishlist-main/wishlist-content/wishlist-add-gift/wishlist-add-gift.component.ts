@@ -16,10 +16,11 @@ export class WishlistAddGiftComponent implements OnInit {
   @Input() commentInitial: string | null = null;
   @Input() dateInitial = TuiDay.currentLocal();
   @Output() addGift = new EventEmitter<WishlistGift>();
+  @Output() editGift = new EventEmitter<WishlistGift>();
+  @Input() submitButtonText: string = 'Добавить';
 
   previousCategoryId = '';
   isFormExpanded = false;
-  submitButtonText: 'Добавить' | 'Сохранить' = 'Добавить';
   currentDate: TuiDay = TuiDay.currentLocal();
 
   form = new FormGroup({
@@ -47,6 +48,10 @@ export class WishlistAddGiftComponent implements OnInit {
 
   get commentInput() {
     return this.form.get('commentInput');
+  }
+
+  onSubmit(updatedGift: WishlistGift): void {
+    this.editGift.emit(updatedGift);
   }
 
   submit(): void {
