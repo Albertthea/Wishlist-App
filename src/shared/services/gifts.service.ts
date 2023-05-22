@@ -65,21 +65,21 @@ export class DataService {
             }
           }
 
-          const nyFestExists = result.some((c: { festId: string; }) => c.festId === 'ny');
-          const bdFestExists = result.some((c: { festId: string; }) => c.festId === 'bd');
+          const nyFestExists = result.some((c: { festId: string; }) => c.festId === 'new_year');
+          const bdFestExists = result.some((c: { festId: string; }) => c.festId === 'birthday');
   
           if (!nyFestExists) {
             result.push({
-              festId: 'ny',
-              festTitle: 'NY',
+              festId: 'new_year',
+              festTitle: 'New Year',
               gifts: [],
             });
           }
   
           if (!bdFestExists) {
             result.push({
-              festId: 'bd',
-              festTitle: 'BD',
+              festId: 'birthday',
+              festTitle: 'Birthday',
               gifts: [],
             });
           }
