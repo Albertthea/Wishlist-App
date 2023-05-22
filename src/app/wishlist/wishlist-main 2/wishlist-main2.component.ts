@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { WishlistFest } from 'src/shared/modes/WishlistFest';
 import { WishlistGift } from 'src/shared/modes/WishlistGift';
 import { DataService } from 'src/shared/services/gifts.service';
 import { AuthService } from 'src/shared/services/auth.service';
@@ -27,5 +26,9 @@ export class WishlistMainComponent2 implements OnInit {
       '0Jhnw9WBEabOZ4VMK6k9vmWelcy1',
       'new_year',
     );
+  }
+
+  editGift(gift: WishlistGift): void {
+    this.festService.editGift(gift);
   }
 }

@@ -1,4 +1,4 @@
-<div class="gift" [ngClass]="{ gift__type_done: gift.isDone }">
+<div class="gift" [ngClass]="{ gift__type_done: gift.isDone }" *ngFor="let gift of fest.gifts">
   <div class="gift__main-info">
     <div class="gift__left-side-wrapper">
       <div class="circle" (click)="toggleDoneStatus()"></div>

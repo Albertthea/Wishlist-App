@@ -8,6 +8,6 @@
 <div class="wrapper">
   <ng-container *ngIf="fest$ | async as fest">
     <app-wishlist-header [fest]="fest"></app-wishlist-header>
+    <app-wishlist-gift [fest]="fest"></app-wishlist-gift>
   </ng-container>
-  <app-wishlist-gift></app-wishlist-gift>
 </div>

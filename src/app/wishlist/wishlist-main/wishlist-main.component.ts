@@ -10,10 +10,17 @@ import { AuthService } from 'src/shared/services/auth.service';
   styleUrls: ['./wishlist-main.component.less'],
 })
 export class WishlistMainComponent implements OnInit {
+  userUid: string | undefined;
   constructor(
     public dataService: DataService,
     public authService: AuthService,
-  ) {}
+  ) {
+    this.authService.currentUser.subscribe(user => {
+      if (user) {
+        this.userUid = user.uid;
+      }
+    });
+  }
 
   ngOnInit() {
     this.authService.init();

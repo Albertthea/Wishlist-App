@@ -1,5 +1,5 @@
 <div class="header">
-  <h1 class="fest">{{ fest.festTitle }}</h1>
+  <h1 class="fest">{{ fest.festTitle }} ({{ fest.festId }}) </h1>
   <p *ngIf="fest.festId === 'today'" class="date">
     {{ currentDate }}
   </p>

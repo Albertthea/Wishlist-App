@@ -1,4 +1,5 @@
 import { WishlistGift } from 'src/shared/modes/WishlistGift';
+import { WishlistFest } from 'src/shared/modes/WishlistFest';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,6 +15,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WishlistGiftComponent2 {
+  @Input() fest!: WishlistFest;
   @Input() gift!: WishlistGift;
   @Input() isFestStatic!: boolean;
   @Output() delete = new EventEmitter<WishlistGift>();

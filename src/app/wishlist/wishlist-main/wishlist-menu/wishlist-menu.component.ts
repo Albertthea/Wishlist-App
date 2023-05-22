@@ -10,12 +10,14 @@ export class WishlistMenuComponent {
   @Input() data!: WishlistFest[];
   @Input() staticCategories!: WishlistFest[];
   @Input() userEmail!: string;
+  @Input() userUid!: string;
   @Output() addFest = new EventEmitter<WishlistFest>();
   @Output() editFest = new EventEmitter<WishlistFest>();
   @Output() delFest = new EventEmitter<string>();
   @Output() festSelected = new EventEmitter<string>();
 
   isFormExpanded: boolean = false;
+
 
   sendNewFest(fest: WishlistFest): void {
     this.addFest.emit(fest);

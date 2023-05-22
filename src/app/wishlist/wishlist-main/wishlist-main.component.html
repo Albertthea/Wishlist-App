@@ -2,6 +2,7 @@
   [data]="dataService.dataWithoutStatic"
   [staticCategories]="[dataService.today, dataService.starred]"
   [userEmail]="authService.userData?.email || ''"
+  [userUid]="userUid || ''"
   (addFest)="addFest($event)"
   (editFest)="editFest($event)"
   (delFest)="deleteFest($event)"

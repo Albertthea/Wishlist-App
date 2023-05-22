@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class WishlistProfileBarComponent {
   @Input() userEmail!: string;
+  @Input() userUid!: string;
 }
-

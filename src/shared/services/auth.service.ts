@@ -5,11 +5,13 @@ import { DataService } from './gifts.service';
 import firebase from 'firebase/compat';
 import User = firebase.User;
 import UserCredential = firebase.auth.UserCredential;
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  currentUser: Observable<any>;
   private _userData: User | null = null;
   private _errorMessage: string | null = null;
 
@@ -17,7 +19,9 @@ export class AuthService {
     private fireAuth: AngularFireAuth,
     private router: Router,
     private dataService: DataService,
-  ) {}
+  ) {
+    this.currentUser = this.fireAuth.authState;
+  }
 
   get userData(): User | null {
     return this._userData;
