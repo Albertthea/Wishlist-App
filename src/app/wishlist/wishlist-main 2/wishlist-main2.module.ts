@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { WishlistMainComponent2 } from './wishlist-main2.component';
 import { WishlistHeaderModule } from './wishlist-header/wishlist-header.module';
 import { DataService } from 'src/shared/services/gifts.service';
-import { WishlistGiftModule2 } from './wishlist-gift/wishlist-gift.module';
+import { WishlistGiftModule2 } from './wishlist-gift2/wishlist-gift2.module';
 import { WishlistProfileBarModule2 } from './wishlist-profile-bar/wishlist-profile-bar.module';
 
 @NgModule({

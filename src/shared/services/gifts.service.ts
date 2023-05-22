@@ -65,9 +65,13 @@ export class DataService {
             }
           }
 
-          const nyFestExists = result.some((c: { festId: string; }) => c.festId === 'new_year');
-          const bdFestExists = result.some((c: { festId: string; }) => c.festId === 'birthday');
-  
+          const nyFestExists = result.some(
+            (c: { festId: string }) => c.festId === 'new_year',
+          );
+          const bdFestExists = result.some(
+            (c: { festId: string }) => c.festId === 'birthday',
+          );
+
           if (!nyFestExists) {
             result.push({
               festId: 'new_year',
@@ -75,7 +79,7 @@ export class DataService {
               gifts: [],
             });
           }
-  
+
           if (!bdFestExists) {
             result.push({
               festId: 'birthday',
@@ -83,7 +87,7 @@ export class DataService {
               gifts: [],
             });
           }
-  
+
           this._data = result;
         } else {
           this._data = [
@@ -96,10 +100,10 @@ export class DataService {
               festId: 'birthday',
               festTitle: 'Birthday',
               gifts: [],
-            }
+            },
           ];
         }
-  
+
         this.setStaticFestsGifts();
         this._data = this._staticFests.concat(this._data);
       });
@@ -143,13 +147,6 @@ export class DataService {
       }
     }
   }
-
-  // updatedData = this._data.slice(0);
-  updatedData = {
-    festId: 'ny',
-    festTitle: 'NY',
-    gifts: [],
-  };
 
   addFest(fest: WishlistFest): void {
     const updatedData = this._data.slice(0);

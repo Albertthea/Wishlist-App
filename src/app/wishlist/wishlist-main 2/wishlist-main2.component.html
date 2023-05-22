@@ -1,5 +1,13 @@
-<app-wishlist-gift></app-wishlist-gift>
+<div class="menu">
+  <h2 class="menu__title">Wishlist App</h2>
+
+  <app-wishlist-profile-bar [userEmail]="authService.userData?.email || ''"></app-wishlist-profile-bar>
+  <div class="splitter"></div>
+</div>
+
 <div class="wrapper">
-  <app-wishlist-header [fest]="dataService.currentFest"></app-wishlist-header>
-  <app-wishlist-profile-bar></app-wishlist-profile-bar>
+  <ng-container *ngIf="fest$ | async as fest">
+    <app-wishlist-header [fest]="fest"></app-wishlist-header>
+  </ng-container>
+  <app-wishlist-gift></app-wishlist-gift>
 </div>

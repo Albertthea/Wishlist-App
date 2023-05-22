@@ -1,3 +1,5 @@
+@import '../../../shared/variables.less';
+
 :host {
   display: flex;
   height: 100%;
@@ -5,4 +7,24 @@
 
 .wrapper {
   flex-basis: 75%;
+}
+
+.content {
+  padding: 3em;
+}
+
+.menu {
+  flex-basis: 25%;
+  padding: 1.5em 0;
+}
+
+.menu__title {
+  margin: 0 0 0 1.5em;
+  font-weight: 400;
+  color: @titles-color;
+}
+
+.splitter {
+  margin: 0 2em;
+  border-top: 1px solid @borders-color;
 }

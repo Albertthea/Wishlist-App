@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { TuiDay } from '@taiga-ui/cdk';
 import { WishlistFest } from 'src/shared/modes/WishlistFest';
 
 @Component({
@@ -9,6 +8,4 @@ import { WishlistFest } from 'src/shared/modes/WishlistFest';
 })
 export class WishlistHeaderComponent {
   @Input() fest!: WishlistFest;
-
-  currentDate = TuiDay.currentLocal();
 }

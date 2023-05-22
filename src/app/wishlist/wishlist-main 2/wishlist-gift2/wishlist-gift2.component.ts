@@ -9,11 +9,11 @@ import {
 
 @Component({
   selector: 'app-wishlist-gift',
-  templateUrl: './wishlist-gift.component.html',
-  styleUrls: ['./wishlist-gift.component.less'],
+  templateUrl: './wishlist-gift2.component.html',
+  styleUrls: ['./wishlist-gift2.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WishlistGiftComponent {
+export class WishlistGiftComponent2 {
   @Input() gift!: WishlistGift;
   @Input() isFestStatic!: boolean;
   @Output() delete = new EventEmitter<WishlistGift>();

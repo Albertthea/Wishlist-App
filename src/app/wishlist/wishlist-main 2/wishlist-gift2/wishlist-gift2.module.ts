@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { WishlistGiftComponent } from './wishlist-gift.component';
+import { WishlistGiftComponent2 } from './wishlist-gift2.component';
 import {
   TuiSvgModule,
   TuiButtonModule,
@@ -16,8 +16,8 @@ import {
 import { TuiDialogModule } from '@taiga-ui/core';
 
 @NgModule({
-  declarations: [WishlistGiftComponent],
-  exports: [WishlistGiftComponent],
+  declarations: [WishlistGiftComponent2],
+  exports: [WishlistGiftComponent2],
   imports: [
     CommonModule,
     TuiSvgModule,
