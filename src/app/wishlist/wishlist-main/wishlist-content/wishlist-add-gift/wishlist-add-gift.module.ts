@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WishlistAddGiftComponent } from './wishlist-add-gift.component';
 import {
-  TuiFieldErrorPipeModule,
-  TuiInputDateModule,
-  TuiInputModule,
-} from '@taiga-ui/kit';
-import {
   TuiButtonModule,
   TuiErrorModule,
   TuiSvgModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {
+  TuiFieldErrorPipeModule,
+  TuiInputDateModule,
+  TuiInputModule,
+} from '@taiga-ui/kit';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

@@ -1,41 +1,55 @@
 <div class="gift" [ngClass]="{ gift__type_done: gift.isDone }">
   <div class="gift__main-info">
     <div class="gift__left-side-wrapper">
-      <div
-        class="circle"
-        (click)="toggleDoneStatus()"
-      ></div>
-
-      <div class="gift__text-container" (click)="onShowData()">
-        <h3 class="gift__title">{{ gift.giftTitle }}</h3>
+      <div class="circle" (click)="toggleDoneStatus()"></div>
+      <div class="gift__text-container">
+        <h3 class="gift__title">
+          {{ gift.giftTitle }}
+        </h3>
+        <p class="gift__description">
+          <span>
+            {{ gift.giftDeadline }}
+          </span>
+          <span *ngIf="isFestStatic">
+            / Праздник: {{ gift.parentFestTitle }}
+          </span>
+        </p>
       </div>
     </div>
-
-    <div class="gift__button-container">
+    <div class="gift__buttons">
       <tui-svg
         *ngIf="!gift.isDone"
-        class="gift__button task__button_type_other"
+        class="gift__button gift__button_type_other"
         [src]="isExpanded ? 'tuiIconMinusLarge' : 'tuiIconMenuLarge'"
         (click)="toggleView()"
       ></tui-svg>
       <tui-svg
-        class="gift__button task__button_type_remove"
-        src="tuiIconXLarge"
+        class="gift__button gift__button_type_other"
+        [ngClass]="{ gift__button_type_starred: gift.isStarred }"
+        src="tuiIconStarLarge"
+        (click)="toggleStarredStatus()"
+      ></tui-svg>
+      <tui-svg
+        class="gift__button gift__button_type_remove"
+        src="tuiIconRemoveLarge"
         (click)="deleteGift()"
       ></tui-svg>
     </div>
   </div>
-  <div class="hidden" *ngIf="showData">
-    {{ gift.giftComment }}
-  </div>
 
-  <div class="gift__edit-container" *ngIf="isExpanded">
+  <div *ngIf="isExpanded" class="gift__additional-info">
+    <div *ngIf="gift.giftComment" class="gift__comment-wrapper">
+      <h3 class="gift__title">Комментарий:</h3>
+      <span class="gift__comment">{{ gift.giftComment }}</span>
+    </div>
+    <div *ngIf="gift.giftLink" class="gift__comment-wrapper">
+      <h3 class="gift__title"></h3>
+      <a href="{{ gift.giftLink }}" class="gift__comment" target="_blank">Cсылка</a>
+    </div>
     <app-wishlist-add-gift
+      mode="edit"
       [gift]="gift"
-      [titleInitial]="gift.giftTitle"
-      [commentInitial]="gift.giftComment ? gift.giftComment : null"
-      (addGift)="sendEditedGift($event)"
-      [submitButtonText]="'Сохранить'"
+      (editGift)="sendEditedGift($event)"
     ></app-wishlist-add-gift>
   </div>
 </div>

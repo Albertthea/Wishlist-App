@@ -1,4 +1,4 @@
-@import "../../shared/variables";
+@import './../../../shared/variables.less';
 
 .form-wrapper {
   padding-top: 10em;
@@ -23,6 +23,27 @@
 
 .input-error {
   text-align: left;
+}
+
+.auth-form__button {
+  margin: 0 2em;
+}
+
+.toggle-mode {
+  background: none;
+  border: none;
+  padding: 0;
+  color: @main-theme-color;
+  transition: color 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: @secondary-theme-color;
+  }
 }
 
 .auth-form__button {

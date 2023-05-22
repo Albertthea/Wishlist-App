@@ -1,0 +1,45 @@
+<div class="menu">
+    <h2 class="menu__title">Wishlist App</h2>
+  
+    <app-wishlist-profile-bar [userEmail]="userEmail"></app-wishlist-profile-bar>
+  
+    <div class="splitter"></div>
+  
+    <div class="static-links-container">
+      <app-wishlist-link
+        *ngFor="let c of staticCategories"
+        [isFestStatic]="true"
+        [fest]="c"
+        (click)="selectFest(c)"
+      ></app-wishlist-link>
+    </div>
+  
+    <div class="splitter"></div>
+  
+    <div class="categories-container">
+      <div class="categories-container__wrapper">
+        <h2 class="categories-container__title">Праздники</h2>
+        <button
+          tuiIconButton
+          type="button"
+          class="categories-container__show-form"
+          [icon]="isFormExpanded ? 'tuiIconMinusLarge' : 'tuiIconPlusLarge'"
+          [size]="'s'"
+          [appearance]="'icon'"
+          (click)="toggleFormView()"
+        ></button>
+      </div>
+      <app-wishlist-add-fest
+        *ngIf="isFormExpanded"
+        (addFest)="sendNewFest($event)"
+      ></app-wishlist-add-fest>
+      <app-wishlist-link
+        *ngFor="let c of data"
+        [fest]="c"
+        (click)="selectFest(c)"
+        (editFest)="sendEditedFest($event)"
+        (delFest)="sendDeletedFest($event)"
+      ></app-wishlist-link>
+    </div>
+  </div>
+  

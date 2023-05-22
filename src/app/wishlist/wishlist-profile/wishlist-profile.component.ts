@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { AuthService } from 'src/shared/services/auth.service';
 @Component({
   selector: 'app-wishlist-profile',
   templateUrl: './wishlist-profile.component.html',
   styleUrls: ['./wishlist-profile.component.less'],
 })
 export class WishlistProfileComponent implements OnInit {
-  userData: any = { email: 'example@example.com' };
-  constructor() {}
+  constructor(public authService: AuthService) {}
 
-  ngOnInit(): void {}
-
-  signOut(): void {}
+  ngOnInit() {
+    this.authService.init();
+  }
 }

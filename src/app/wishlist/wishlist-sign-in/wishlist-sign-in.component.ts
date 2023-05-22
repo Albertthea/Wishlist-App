@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TUI_VALIDATION_ERRORS } from '@taiga-ui/kit';
+import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
   selector: 'app-wishlist-sign-in',
@@ -12,25 +13,13 @@ import { TUI_VALIDATION_ERRORS } from '@taiga-ui/kit';
       useValue: {
         required: 'Поле обязательно для заполнения',
         email: 'Адрес должен быть в формате example@example.com',
-        minlength: 'Длина пароля должна быть не менее 6 символов',
+        minlength: 'Длина пароля не менее 6 символов',
       },
     },
   ],
 })
-export class WishlistSignInComponent implements AfterViewInit {
-  ngAfterViewInit(): void {
-    const btn = document.querySelector('.auth-form__button') as HTMLElement;
-    let position = 0;
-    btn.addEventListener('mouseover', (event) => {
-      if (this.form.invalid) {
-        position ? (position = 0) : (position = 150);
-        btn.style.transform = `translate(${position}px, 0px)`;
-        btn.style.transition = 'all 0.3s ease';
-      } else {
-        return;
-      }
-    });
-  }
+export class WishlistSignInComponent {
+  constructor(public authService: AuthService) {}
 
   mode: 'sign-in' | 'sign-up' = 'sign-in';
 
@@ -56,17 +45,13 @@ export class WishlistSignInComponent implements AfterViewInit {
 
   sign(): void {
     if (this.form.valid) {
-      const email = this.form.get('emailInput')?.value;
-      const password = this.form.get('passwordInput')?.value;
+      const email: any = this.form.get('emailInput')?.value;
+      const password: any = this.form.get('passwordInput')?.value;
 
       if (this.mode === 'sign-in') {
-        console.log(
-          `Signing in with email: ${email} and password: ${password}`
-        );
+        this.authService.signIn(email, password);
       } else if (this.mode === 'sign-up') {
-        console.log(
-          `Signing up with email: ${email} and password: ${password}`
-        );
+        this.authService.signUp(email, password);
       }
     } else {
       this.form.markAllAsTouched();

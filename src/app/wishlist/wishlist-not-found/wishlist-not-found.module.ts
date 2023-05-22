@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [WishlistNotFoundComponent],
-  exports: [WishlistNotFoundComponent],
   imports: [CommonModule, BrowserModule],
 })
 export class WishlistNotFoundModule {}

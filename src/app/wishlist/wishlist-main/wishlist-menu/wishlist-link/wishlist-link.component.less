@@ -1,0 +1,55 @@
+@import '../../../../../shared/variables.less';
+
+.link {
+  width: 100%;
+  min-height: 3em;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: @main-text-color;
+
+  &:hover {
+    background-color: @button-background-color;
+    color: @main-theme-color;
+    border-left: 7px solid @main-theme-color;
+
+    .link__buttons {
+      display: block;
+    }
+  }
+}
+
+.link__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  height: 3em;
+  padding-left: 2.5em;
+  padding-right: 2em;
+}
+
+.link__icon {
+  margin-right: 1em;
+}
+
+.link__buttons {
+  display: none;
+}
+
+.link__button {
+  color: @borders-color;
+  margin-left: 0.3em;
+}
+
+.link__button_type_other {
+  &:hover {
+    color: @main-theme-color;
+  }
+}
+
+.link__button_type_remove {
+  &:hover {
+    color: @remove-color;
+  }
+}

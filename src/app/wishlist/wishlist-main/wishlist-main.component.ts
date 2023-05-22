@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WishlistFest } from 'src/shared/modes/WishlistFest';
 import { WishlistGift } from 'src/shared/modes/WishlistGift';
+import { DataService } from 'src/shared/services/gifts.service';
+import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
   selector: 'app-wishlist-main',
@@ -8,64 +10,41 @@ import { WishlistGift } from 'src/shared/modes/WishlistGift';
   styleUrls: ['./wishlist-main.component.less'],
 })
 export class WishlistMainComponent implements OnInit {
-  constructor() {
-    this.currentCategoryId = '';
-  }
-
-  categories: WishlistFest[] = [];
-  currentCategoryId: string;
-  gifts: WishlistGift[] = [];
+  constructor(
+    public dataService: DataService,
+    public authService: AuthService,
+  ) {}
 
   ngOnInit() {
-    this.currentCategoryId = 'someCategoryID';
+    this.authService.init();
+    this.dataService.updateData();
   }
 
-  getCurrentCategory(): WishlistFest {
-    const category = this.categories.find(
-      (c) => c.categoryId === this.currentCategoryId
-    );
-    return category || { categoryId: '', categoryTitle: '', gifts: [] };
+  addFest(fest: WishlistFest): void {
+    this.dataService.addFest(fest);
   }
 
-  addCategory(category: WishlistFest): void {
-    this.categories.push(category);
+  editFest(fest: WishlistFest): void {
+    this.dataService.editFest(fest);
   }
 
-  editCategory(category: WishlistFest): void {
-    const index = this.categories.findIndex(
-      (c) => c.categoryId === category.categoryId
-    );
-    if (index !== -1) {
-      this.categories[index] = category;
-    }
+  deleteFest(id: string): void {
+    this.dataService.deleteFest(id);
   }
 
-  deleteCategory(id: string): void {
-    const index = this.categories.findIndex((c) => c.categoryId === id);
-    if (index !== -1) {
-      this.categories.splice(index, 1);
-    }
+  setCurrentFest(id: string): void {
+    this.dataService.changeCurrentFest(id);
   }
 
-  setCurrentCategory(id: string): void {
-    this.currentCategoryId = id;
+  addGift(gift: WishlistGift): void {
+    this.dataService.addGift(gift);
   }
 
-  addgift(gift: WishlistGift): void {
-    this.gifts.push(gift);
+  editGift(gift: WishlistGift): void {
+    this.dataService.editGift(gift);
   }
 
-  editgift(gift: WishlistGift): void {
-    const index = this.gifts.findIndex((t) => t.giftId === gift.giftId);
-    if (index !== -1) {
-      this.gifts[index] = gift;
-    }
-  }
-
-  deletegift(gift: WishlistGift): void {
-    const index = this.gifts.findIndex((t) => t.giftId === gift.giftId);
-    if (index !== -1) {
-      this.gifts.splice(index, 1);
-    }
+  deleteGift(gift: WishlistGift): void {
+    this.dataService.deleteGift(gift);
   }
 }

@@ -1,0 +1,39 @@
+<div class="gift" [ngClass]="{ gift__type_done: gift.isDone }">
+  <div class="gift__main-info">
+    <div class="gift__left-side-wrapper">
+      <div class="circle" (click)="toggleDoneStatus()"></div>
+      <div class="gift__text-container">
+        <h3 class="gift__title">
+          {{ gift.giftTitle }}
+        </h3>
+        <p class="gift__description">
+          <span>
+            {{ gift.giftDeadline }}
+          </span>
+          <span *ngIf="isFestStatic">
+            / Праздник: {{ gift.parentFestTitle }}
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="gift__buttons">
+      <tui-svg
+        *ngIf="!gift.isDone"
+        class="gift__button gift__button_type_other"
+        [src]="isExpanded ? 'tuiIconMinusLarge' : 'tuiIconMenuLarge'"
+        (click)="toggleView()"
+      ></tui-svg>     
+    </div>
+  </div>
+
+  <div *ngIf="isExpanded" class="gift__additional-info">
+    <div *ngIf="gift.giftComment" class="gift__comment-wrapper">
+      <h3 class="gift__title">Комментарий:</h3>
+      <span class="gift__comment">{{ gift.giftComment }}</span>
+    </div>
+    <div *ngIf="gift.giftLink" class="gift__comment-wrapper">
+      <h3 class="gift__title"></h3>
+      <a href="{{ gift.giftLink }}" class="gift__comment" target="_blank">Cсылка</a>
+    </div>
+  </div>
+</div>

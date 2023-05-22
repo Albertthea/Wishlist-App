@@ -1,2 +1,18 @@
-<!-- <app-wishlist-header [category]="getCurrentCategory()"></app-wishlist-header> -->
-<app-wishlist-content></app-wishlist-content>
+<app-wishlist-menu
+  [data]="dataService.dataWithoutStatic"
+  [staticCategories]="[dataService.today, dataService.starred]"
+  [userEmail]="authService.userData?.email || ''"
+  (addFest)="addFest($event)"
+  (editFest)="editFest($event)"
+  (delFest)="deleteFest($event)"
+  (festSelected)="setCurrentFest($event)"
+></app-wishlist-menu>
+<div class="wrapper">
+  <app-wishlist-header [fest]="dataService.currentFest"></app-wishlist-header>
+  <app-wishlist-content
+    [fest]="dataService.currentFest"
+    (addGift)="addGift($event)"
+    (editGift)="editGift($event)"
+    (delGift)="deleteGift($event)"
+  ></app-wishlist-content>
+</div>

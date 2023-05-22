@@ -1,0 +1,26 @@
+@import '../../../../../../shared/variables.less';
+
+.fest-form {
+  padding: 1em 1.5em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fest-input-wrapper {
+  width: 70%;
+}
+
+.fest-submit-button {
+  width: 25%;
+  background: @main-theme-color;
+  color: @secondary-text-color;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 1px 1px 4px 0 @shadow-color;
+  }
+
+  &:active {
+    box-shadow: inset 2px 2px 5px 0 @shadow-color;
+  }
+}

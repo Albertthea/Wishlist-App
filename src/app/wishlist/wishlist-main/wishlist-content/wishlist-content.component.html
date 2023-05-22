@@ -1,19 +1,19 @@
 <div class="content">
-  <button
-    tuiButton
-    class="add-task__button"
-    type="button"
-    (click)="toggle()"
-  >
-    {{ expanded ? "-" : "+" }}
-  </button>
-  <app-wishlist-add-gift *ngIf="expanded" (addGift)="addGift($event)"></app-wishlist-add-gift>
   <app-wishlist-gift
-    *ngFor="let g of gifts; let i = index"
-    [gift]="g"
-    [isExpanded]="i === expandedItem"
-    (toggleExpand)="onToggleExpand(i)"
+    *ngFor="let t of fest.gifts"
+    [gift]="t"
+    [isFestStatic]="
+    fest.festId === 'today' || fest.festId === 'starred'
+    "
     (editGift)="sendEditedGift($event)"
     (delete)="sendGiftDeleting($event)"
   ></app-wishlist-gift>
+  <app-wishlist-add-gift
+    *ngIf="
+      !(fest?.festId === 'today' || fest?.festId === 'starred')
+    "
+    (addGift)="sendCreatedGift($event)"
+    [currentFestTitle]="fest.festTitle"
+    [currentFestId]="fest.festId"
+  ></app-wishlist-add-gift>
 </div>

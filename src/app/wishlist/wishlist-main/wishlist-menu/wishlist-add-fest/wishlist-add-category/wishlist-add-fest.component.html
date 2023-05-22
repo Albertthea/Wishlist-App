@@ -1,0 +1,23 @@
+<form [formGroup]="form" (submit)="submit()" class="fest-form">
+    <div class="fest-input-wrapper">
+      <tui-input
+        formControlName="inputTitle"
+        class="fest-input"
+        [tuiTextfieldSize]="'s'"
+        >Название праздника</tui-input
+      >
+      <tui-error
+        formControlName="inputTitle"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+    </div>
+    <button
+      tuiButton
+      type="submit"
+      class="fest-submit-button"
+      appearance="custom"
+      [size]="'s'"
+    >
+      {{ mode === 'add' ? 'Добавить' : 'Сохранить' }}
+    </button>
+  </form>

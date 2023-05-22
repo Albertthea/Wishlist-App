@@ -1,8 +1,11 @@
 export interface WishlistGift {
-  giftId?: string;
+  giftId: string;
   giftTitle: string;
+  giftDeadline: string;
   giftComment?: string;
-  isDone?: boolean;
-  parentCategoryTitle?: string;
-  parentCategoryId?: string;
+  giftLink?: string;
+  isDone: boolean;
+  isStarred: boolean;
+  parentFestTitle: string;
+  parentFestId: string;
 }

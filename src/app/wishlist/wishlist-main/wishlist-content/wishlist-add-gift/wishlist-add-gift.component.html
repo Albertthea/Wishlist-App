@@ -1,68 +1,71 @@
-<form class="add-gift__form" [formGroup]="form" (submit)="submit()" novalidate>
-  <div class="tui-form__row">
-    <tui-input
-      class="add-gift__input"
-      formControlName="titleInput"
-      tuiTextfieldSize="s"
-      >Подарок</tui-input
-    >
-    <span
-      *ngIf="
-        titleInput.errors?.hasOwnProperty('required') && titleInput.touched
-      "
-      class="help-inline"
-      >поле обязательно для заполнения</span
-    >
-    <span
-      *ngIf="
-        titleInput.errors?.hasOwnProperty('minlength') &&
-        titleInput.touched &&
-        !titleInput.errors?.hasOwnProperty('required')
-      "
-      class="help-inline"
-      >минимальная длина — 3</span
-    >
-    <span
-      *ngIf="
-        titleInput.errors?.hasOwnProperty('maxlength') &&
-        titleInput.touched &&
-        !titleInput.errors?.hasOwnProperty('required')
-      "
-      class="help-inline"
-      >максимальная длина — 60</span
-    >
-  </div>
-
-  <div class="tui-form__row">
-    <tui-input-date
-      class="add-gift__input"
-      tuiTextfieldSize="s"
-      [min]="currentDate"
-    ></tui-input-date>
-  </div>
-
-  <div class="tui-form__row">
-    <tui-input
-      class="add-gift__input"
-      formControlName="commentInput"
-      tuiTextfieldSize="s"
-      >Комментарий</tui-input
-    >
-    <span
-      *ngIf="commentInput?.errors?.hasOwnProperty('maxlength')"
-      class="help-inline"
-      >максимальная длина — 60</span
-    >
-  </div>
-
-  <button
-    class="add-gift__submit-button"
-    [disabled]="form.invalid"
-    tuiButton
-    type="submit"
-    size="s"
-    appearance="custom"
-  >
-    {{ submitButtonText }}
+<div class="add-gift" [ngClass]="{ 'add-gift_type_edit': mode === 'edit' }">
+  <button class="add-gift__button" type="button" (click)="toggleFormView()">
+    <tui-svg class="add-gift__icon" [src]="buttonIcon"></tui-svg>
+    {{ buttonText }}
   </button>
-</form>
+
+  <form
+    class="add-gift__form"
+    *ngIf="isFormExpanded"
+    [formGroup]="form"
+    (submit)="submit()"
+  >
+    <div class="add-gift__input-wrapper">
+      <tui-input
+        class="add-gift__input"
+        formControlName="titleInput"
+        tuiTextfieldSize="s"
+        >Название подарка</tui-input
+      >
+      <tui-error
+        formControlName="titleInput"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+    </div>
+    <div class="add-gift__input-wrapper">
+      <tui-input-date
+        class="add-gift__input"
+        formControlName="deadlineInput"
+        tuiTextfieldSize="s"
+        [min]="currentDate"
+      ></tui-input-date>
+      <tui-error
+        formControlName="deadlineInput"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+    </div>
+    <div class="add-gift__input-wrapper">
+      <tui-input
+        class="add-gift__input"
+        formControlName="commentInput"
+        tuiTextfieldSize="s"
+        >Комментарий</tui-input
+      >
+      <tui-error
+        formControlName="commentInput"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+    </div>
+    <div class="add-gift__input-wrapper">
+      <tui-input
+        class="add-gift__input"
+        formControlName="linkInput"
+        tuiTextfieldSize="s"
+        >Ссылка</tui-input
+      >
+      <tui-error
+        formControlName="linkInput"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+    </div>
+    <button
+      class="add-gift__submit-button"
+      tuiButton
+      type="submit"
+      size="s"
+      appearance="custom"
+    >
+      {{ submitButtonText }}
+    </button>
+  </form>
+</div>

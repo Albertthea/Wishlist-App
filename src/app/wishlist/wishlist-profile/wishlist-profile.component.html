@@ -1,17 +1,22 @@
 <div class="profile-wrapper">
   <div class="profile">
-    <h1 class="profile__title">Profile</h1>
+    <h1 class="profile__title">Профиль</h1>
     <div class="user-info">
-      <div class="user-info__email">Your email: {{ userData?.email }}</div>
+      <div class="user-info__email">
+        Ваш e-mail: {{ authService.userData?.email }}
+      </div>
       <tui-svg
         class="user-info__button"
         src="tuiIconLogOutLarge"
-        (click)="signOut()"
+        (click)="authService.signOut()"
       ></tui-svg>
     </div>
     <div class="row-wrapper">
       <a href="/">
-        <button>Go to wishlist</button>
+        <button tuiButton>К списку своих подарков</button>
+      </a>
+      <a href="/main2">
+        <button tuiButton>К списку чужих подарков</button>
       </a>
     </div>
   </div>

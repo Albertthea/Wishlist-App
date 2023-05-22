@@ -1,0 +1,28 @@
+<div class="link">
+  <div class="link__wrapper">
+    <div class="link__info">
+      <tui-svg src="tuiIconFolderLarge" class="link__icon"></tui-svg>
+      <span class="link__text">{{ fest.festTitle }}</span>
+    </div>
+
+    <div *ngIf="!isFestStatic" class="link__buttons">
+      <tui-svg
+        class="link__button link__button_type_other"
+        [src]="isExpanded ? 'tuiIconMinusLarge' : 'tuiIconEditLarge'"
+        (click)="toggleView($event)"
+      ></tui-svg>
+      <tui-svg
+        class="link__button link__button_type_remove"
+        src="tuiIconRemoveLarge"
+        (click)="deleteFest($event)"
+      ></tui-svg>
+    </div>
+  </div>
+
+  <app-wishlist-add-fest
+    *ngIf="isExpanded"
+    mode="edit"
+    [fest]="fest"
+    (editFest)="sendEditedFest($event)"
+  ></app-wishlist-add-fest>
+</div>

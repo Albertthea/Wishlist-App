@@ -1,17 +1,55 @@
 @import "./../../../../../shared/variables.less";
 @import "~@taiga-ui/core/styles/taiga-ui-local";
 
+.add-gift {
+  min-height: 4.5em;
+  padding: 1.3em 1em;
+  border-bottom: 1px solid @borders-color;
+
+  &.add-gift_type_edit {
+    border-bottom: none;
+    padding: 1.3em 0;
+
+    .add-gift__icon {
+      margin-right: 1em;
+    }
+  }
+}
+
+.add-gift__button {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  color: @main-theme-color;
+  transition: color 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    color: @secondary-theme-color;
+  }
+}
+
+.add-gift__icon {
+  margin-right: 1.6em;
+}
+
 .add-gift__form {
   margin-top: 1em;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   width: 80%;
-  padding: 10px;
+}
+
+.add-gift__input-wrapper {
+  width: 29%;
 }
 
 .add-gift__submit-button {
   background: @main-theme-color;
-  color: @titles-color;
+  color: @secondary-text-color;
   transition: box-shadow 0.3s;
 
   &:hover {
@@ -23,10 +61,3 @@
   }
 }
 
-.tui-form__row {
-  padding-bottom: 10px;
-}
-
-.help-inline {
-  color: @remove-color;
-}

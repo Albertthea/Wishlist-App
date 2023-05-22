@@ -5,6 +5,8 @@ import { TuiBadgeModule, TuiInputModule } from '@taiga-ui/kit';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TuiButtonModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { TuiFieldErrorPipeModule, TuiInputPasswordModule } from '@taiga-ui/kit';
+import { TuiErrorModule } from '@taiga-ui/core';
 
 @NgModule({
   declarations: [WishlistSignInComponent],
@@ -18,6 +20,9 @@ import { BrowserModule } from '@angular/platform-browser';
     TuiButtonModule,
     BrowserModule,
     FormsModule,
+    TuiErrorModule,
+    TuiFieldErrorPipeModule,
+    TuiInputPasswordModule,
   ],
 })
 export class WishlistSignInModule {}
