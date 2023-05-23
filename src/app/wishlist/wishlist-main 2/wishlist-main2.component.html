@@ -1,13 +1,24 @@
 <div class="menu">
   <h2 class="menu__title">Wishlist App</h2>
 
-  <app-wishlist-profile-bar [userEmail]="authService.userData?.email || ''"></app-wishlist-profile-bar>
+  <app-wishlist-profile-bar
+    [userEmail]="authService.userData?.email || ''"
+  ></app-wishlist-profile-bar>
   <div class="splitter"></div>
+  <div class="inputs">
+    <input [(ngModel)]="profileIdInput" placeholder="Profile ID" required />
+    <input [(ngModel)]="festIdInput" placeholder="Fest ID" required />
+    <button (click)="loadFest()">Посмотреть вишлист</button>
+  </div>
 </div>
 
 <div class="wrapper">
   <ng-container *ngIf="fest$ | async as fest">
     <app-wishlist-header [fest]="fest"></app-wishlist-header>
-    <app-wishlist-gift [fest]="fest"></app-wishlist-gift>
+    <app-wishlist-gift2
+      (editGift)="editGift($event)"
+      *ngFor="let g of fest.gifts"
+      [gift]="g"
+    ></app-wishlist-gift2>
   </ng-container>
 </div>

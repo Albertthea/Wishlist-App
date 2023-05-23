@@ -1,7 +1,7 @@
 <div class="content">
   <app-wishlist-gift
-    *ngFor="let t of fest.gifts"
-    [gift]="t"
+    *ngFor="let g of fest.gifts"
+    [gift]="g"
     [isFestStatic]="
     fest.festId === 'today' || fest.festId === 'starred'
     "

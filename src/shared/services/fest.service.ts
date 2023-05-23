@@ -40,20 +40,21 @@ export class FestService {
 
   updateData(): void {
     const cachedUserData = localStorage.getItem('user');
+
     if (cachedUserData) {
       const userData = JSON.parse(cachedUserData);
-      const ref = this.db.database.ref('/' + userData.uid);
-      ref.get().then((snapshot) => {
-        const result = snapshot.val() || [
-          { festId: '', festTitle: 'нет такого праздника', gifts: [] },
-        ];
-        for (const c of result) {
-          if (!c.gifts) {
-            c.gifts = [];
+      this.ref = this.db.database.ref('/' + userData.uid);
+
+      this.ref.get().then((snapshot) => {
+        const result = snapshot.val();
+
+        if (result) {
+          for (const c of result) {
+            if (!c.gifts || !Array.isArray(c.gifts)) {
+              c.gifts = [];
+            }
           }
         }
-        this._data = result;
-        console.log('Data updated:', this._data);
       });
     }
   }
@@ -81,19 +82,23 @@ export class FestService {
       );
   }
 
-  editGift(updatedGift: WishlistGift): void {
-    const festToUpdate = this._data.find((fest) =>
-      fest.gifts.some((gift) => gift.giftId === updatedGift.giftId),
+  setData(data: WishlistFest[]): void {
+    const filteredData = data.slice(2);
+    this.ref.set(filteredData).then(() => {
+      this.updateData();
+    });
+  }
+
+  editGift(gift: WishlistGift): void {
+    const updatedData = this._data.slice(0);
+    const festIndex = updatedData.findIndex(
+      (item) => item.festId === gift.parentFestId,
+    );
+    const giftIndex = updatedData[festIndex].gifts.findIndex(
+      (item) => item.giftId === gift.giftId,
     );
 
-    if (festToUpdate) {
-      const giftToUpdate = festToUpdate.gifts.find(
-        (gift) => gift.giftId === updatedGift.giftId,
-      );
-
-      if (giftToUpdate) {
-        giftToUpdate.isDone = updatedGift.isDone;
-      }
-    }
+    updatedData[festIndex].gifts[giftIndex] = gift;
+    this.setData(updatedData);
   }
 }

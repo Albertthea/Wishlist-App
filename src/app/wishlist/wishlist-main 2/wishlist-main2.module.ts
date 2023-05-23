@@ -5,6 +5,8 @@ import { WishlistHeaderModule } from './wishlist-header/wishlist-header.module';
 import { DataService } from 'src/shared/services/gifts.service';
 import { WishlistGiftModule2 } from './wishlist-gift2/wishlist-gift2.module';
 import { WishlistProfileBarModule2 } from './wishlist-profile-bar/wishlist-profile-bar.module';
+import { FormsModule } from '@angular/forms';
+import { TuiButtonModule } from '@taiga-ui/core';
 
 @NgModule({
   declarations: [WishlistMainComponent2],
@@ -12,9 +14,11 @@ import { WishlistProfileBarModule2 } from './wishlist-profile-bar/wishlist-profi
   providers: [DataService],
   imports: [
     CommonModule,
+    FormsModule,
     WishlistHeaderModule,
     WishlistGiftModule2,
     WishlistProfileBarModule2,
+    TuiButtonModule,
   ],
 })
 export class WishlistMainModule2 {}

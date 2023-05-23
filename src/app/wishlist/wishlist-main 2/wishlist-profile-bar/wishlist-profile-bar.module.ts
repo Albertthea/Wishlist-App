@@ -2,13 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WishlistProfileBarComponent } from './wishlist-profile-bar.component';
 
-
-
 @NgModule({
   declarations: [WishlistProfileBarComponent],
   exports: [WishlistProfileBarComponent],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
 })
-export class WishlistProfileBarModule2 { }
+export class WishlistProfileBarModule2 {}
